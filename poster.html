@@ -1,0 +1,225 @@
+<html>
+<head><title></title>
+<style>
+body {
+  font-family: "UC Berkeley OS", "Minion Pro", "Times New Roman", times, serif;
+  font-size: 36pt; /* For ~ A0 paper size */
+  margin: 0;
+}
+
+/*  SECTIONS  */
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 0%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+/*  GRID OF TWO  */
+.span_1_of_2 {
+  width: 75%;
+  /*border: 1px solid blue;*/
+  margin: 0;
+  height: 100%;
+}
+.span_2_of_2 {
+  width: 25%;
+  /*border: 1px solid red;*/
+  margin: 0;
+
+  color: #fff;
+  background-color: #003262;
+  height: 100%;
+}
+
+.halfwidth {
+	width: 47%;
+	height: 100%;
+}
+.buffer {
+	height: 100%;
+	width: 2%;
+	margin: 0;
+}
+
+.left {
+	padding: 2em;
+	margin-left: 1em;
+}
+.left h1 {
+	margin: 0;
+	padding: 0;
+	color: #fdb515;
+}
+.left p {
+  line-height: 150%;
+  margin-top: 2em;
+  margin-top: 0em;
+  font-size: 120%;
+}
+.left img {
+	margin: 0;
+}
+.rightbottom {
+	clear: both;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin: 0px;
+	height: 30%;
+}
+
+.figure {
+	width: 33%;
+}
+
+.figure img {
+	height: 75%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.figcaption {
+	font-size: 50%;
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	.col { 
+		margin: 1% 0 1% 0%;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.span_2_of_2, .span_1_of_2 { width: 100%; }
+}
+
+
+.textcol {
+	padding: 1em;
+	margin: 0em;
+	margin-top: 1em;
+	height: 90%;
+
+	background-color: #fff;
+	opacity: 0.8;
+}
+
+.textcol h2 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+div.background {
+  background: url("2016-sp-day1-crop.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+	height: 70%;
+}
+
+</style>
+</head>
+<body>
+
+<div class="section group">
+	<div class="col span_2_of_2">
+		<div class="left">
+			<h1>JupyterHub in Instruction</h1>
+			<p>The Jupyter Notebook is a powerful and elegant way of creating and sharing code, visualizations, and documentation. In data science instruction, hosting notebooks in JupyterHub eliminates the need to have students replicate software installation on personal devices, reduces the demand on physical lab resources, ensures reproducibility, and more importantly, frees up time for both learning and teaching.</p>
+
+			<img width="100%" src="databears.png" />
+		</div><!-- "left" -->
+	</div><!-- "col span_2_of_2" -->
+
+	<div class="col span_1_of_2">
+		<div class="lefttop">
+			<div class="section group background">
+				<div class="col buffer"></div>
+				<div class="col halfwidth">
+					<div class="textcol">
+
+						<h2>Notebooks</h2>
+						<blockquote cite="http://jupyter.org">
+							<p>"The Jupyter Notebook is a web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning and much more."</p>
+							<footer>- http://jupyter.org</footer>
+						</blockquote>
+
+						<h2>Hub</h2>
+						<p>While notebooks can be easily run on a personal device or lab machine, hosting the environment relieves the students from having to install the software themselves. It also means that each student has the same starting point and results are reproducible.</p>
+
+						<h2>DS8 - Foundations of Data Science</h2>
+						<p>The pilot course in Fall 2015 had 80 students and was deployed on intel-donated bare metal machines in EECS. In Spring 2016 we had about 450 students and deployed on Microsoft-donated Azure nodes. Both deployments were based on Jessica Hamrick's JupyterHub for COGSCI 131.</p>
+
+						<p>DS8 was complemented by a suite of courses in departments across campus, introducing diverse subjects through the lens of data science. These were known as &quot;connector courses&quot;:</p>
+						<blockquote>CEE 88 &bull; COGSCI 88 &bull; CS 88 &bull; ESPM 88A &bull; ESPM 88B &bull; HIST 88<br>INFO 88 &bull; L&S 88-1 &bull; L&S 88-2 &bull; STAT 88 &bull; STAT 89a</blockquote>
+
+					</div><!-- textcol -->
+				</div><!-- col halfwidth -->
+
+				<div class="col buffer"></div>
+
+				<div class="col halfwidth">
+					<div class="textcol">
+						<h2>Future Direction</h2>
+						<ul>
+						<li>Scaling up to support more students. We have a team of students adding statsd integration for logging and monitoring, and selenium for load testing.</li>
+						<li>Scaling out to support more classes. Our goal is to eventually have one JupyterHub deployment that can serve any course at UC Berkeley that wants to use Jupyter notebooks. Adding JupyterHub for a course should be as easy as creating a class web page.</li>
+						<li>Adding features such as Google Drive or Box integration for notebook storage and distribution, nbgrader for notebook grading, and roster-based account provisioning via SIS APIs or CalNet authz with CalGroups.</li>
+						</ul>
+
+						<h2>Your Courses</h2>
+						<p>Are you interested in using Jupyter notebooks for your course, workshop, or intensive? We'd like to hear about it! Please contact <nobr>ds-instr@berkeley.edu.</nobr></p>
+						<h2>Further Reading</h2>
+
+						<dl>
+							<dt>Data Science Education Program</dt><dd>http://databears.berkeley.edu</dd>
+							<dt>Foundations of Data Science, DS8 Spring 2016</dt><dd>https://data-8.appspot.com/sp16</dd>
+							<dt>Interactive Textbook</dt><dd>http://www.inferentialthinking.com</dd>
+							<dt>Deploying JupyterHub for Education</dt><dd>https://developer.rackspace.com/blog/deploying-jupyterhub-for-education</dd>
+							<dt>This Poster</dt><dd>http://github.com/data-8/poster</dd>
+						</dl>
+					</div><!-- textcol -->
+				</div><!-- col halfwidth -->
+			</div><!-- section group background -->
+
+			<div class="rightbottom">
+				<div class="col figure">
+					<img src="jdp-text.jpg">
+					<p class="figcaption">The course's online textbook</p>
+				</div>
+				<div class="col figure">
+					<img src="jdp-notebook.jpg">
+					<p class="figcaption">A student's notebook session</p>
+				</div>
+				<div class="col figure">
+					<img src="sketch.png">
+					<p class="figcaption">Under the hood of our deployment</p>
+				</div>
+			</div><!-- rightbottom -->
+		</div><!-- lefttop -->
+	</div><!-- col span_1_of_2 -->
+
+</div><!-- section group -->
+
+</body>
+</html>
